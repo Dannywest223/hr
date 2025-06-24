@@ -12,7 +12,8 @@ const Login = () => {
   const location = useLocation();
 
   // Use consistent backend URL
-  const backendUrl = config.backendUrl || import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000';
+  const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 
   const [formData, setFormData] = useState({
     email: '',

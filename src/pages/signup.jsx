@@ -92,7 +92,8 @@ const handleSubmit = async (e) => {
 
   try {
     // Make sure this matches your backend URL
-    const backendUrl = 'http://localhost:5000';
+    const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+
 
     const response = await fetch(`${backendUrl}/api/auth/signup`, {
       method: 'POST',
@@ -151,7 +152,7 @@ const handleSubmit = async (e) => {
   const handleGoogleSignUp = async () => {
     try {
       // Redirect to Google OAuth endpoint
-      window.location.href = '/api/auth/google';
+     window.location.href = `${backendUrl}/api/auth/google`;;
     } catch (error) {
       console.error('Google signup error:', error);
       setMessage({

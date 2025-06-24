@@ -615,8 +615,8 @@ export default function Dashboard() {
     // Debounce the search
     searchTimeoutRef.current = setTimeout(async () => {
       setIsSearching(true);
-      try {
-        const response = await axios.get(`http://localhost:5000/api/search?q=${encodeURIComponent(query)}`);
+      try {const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const response = await axios.get(`${backendUrl}/api/search?q=${encodeURIComponent(query)}`);
         
         if (response.data.success) {
           setSearchResults(response.data.results);
@@ -730,7 +730,7 @@ export default function Dashboard() {
         throw new Error('No authentication token found');
       }
 
-      const response = await fetch('http://localhost:5000/api/candidates', {
+      const response = await fetch(`${backendUrl}/api/candidates`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -902,7 +902,7 @@ export default function Dashboard() {
         }
       }
 
-      const response = await fetch('http://localhost:5000/api/candidates', {
+      const response = await fetch(`${backendUrl}/api/candidates`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -974,7 +974,7 @@ export default function Dashboard() {
         throw new Error('No authentication token found');
       }
 
-      const response = await fetch(`http://localhost:5000/api/candidates/${candidateId}`, {
+      const response = await fetch(`${backendUrl}/api/candidates/${candidateId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -1321,7 +1321,7 @@ export default function Dashboard() {
   const fetchJobs = async () => {
     try {
       const token = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
-      const response = await fetch('http://localhost:5000/api/jobs', {
+      const response = await fetch(`${backendUrl}/api/jobs`, {
         headers: {
           'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -1370,7 +1370,7 @@ export default function Dashboard() {
           : jobData.requirements
       };
 
-      const response = await fetch('http://localhost:5000/api/jobs', {
+      const response = await fetch(`${backendUrl}/api/jobs`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`,

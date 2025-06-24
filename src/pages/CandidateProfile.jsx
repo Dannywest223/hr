@@ -50,9 +50,9 @@ export default function CandidateProfile() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        
+        const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
         // Fetch candidate
-        const candidateRes = await fetch(`http://localhost:5000/api/candidates/${id}`, {
+        const candidateRes = await fetch(`${backendUrl}/api/candidates/${id}`, {
           headers: {
             'Authorization': `Bearer ${getToken()}`,
             'Content-Type': 'application/json'
@@ -69,9 +69,13 @@ export default function CandidateProfile() {
         } else {
           throw new Error(candidateData.message || 'Failed to fetch candidate');
         }
-
+       
+       
+        
         // Fetch jobs
-        const jobsRes = await fetch('http://localhost:5000/api/jobs', {
+      
+
+        const jobsRes = await fetch(`${backendUrl}/api/jobs`, {
           headers: {
             'Authorization': `Bearer ${getToken()}`,
             'Content-Type': 'application/json'
@@ -115,7 +119,7 @@ export default function CandidateProfile() {
 
   const saveEvaluation = async (evalData) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/candidates/${id}/evaluation`, {
+      const response = await fetch(`${backendUrl}/api/candidates/${id}/evaluation`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${getToken()}`,

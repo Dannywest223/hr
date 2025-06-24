@@ -21,7 +21,8 @@ const EmailVerification = () => {
       }
 
       try {
-        const backendUrl = 'http://localhost:5000'; // Make sure this matches your backend URL
+        const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        // Make sure this matches your backend URL
         const response = await fetch(`${backendUrl}/api/auth/verify-email?token=${token}`);
         const data = await response.json();
 
