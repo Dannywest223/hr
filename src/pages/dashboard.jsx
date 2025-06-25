@@ -1769,9 +1769,9 @@ export default function Dashboard() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
               {[
                 { number: upcomingMeetings.length, title: 'Interview', subtitle: 'Scheduled', image: '/public/0.png' },
-                { number: '2', title: 'Interview Feedback', subtitle: 'Pending', image: '/public/1.png' },
-                { number: '44', title: 'Approval', subtitle: 'Pending', image: '/public/2.png' },
-                { number: '13', title: 'Offer Acceptance', subtitle: 'Pending', image: '/public/3.png' }
+                { number: '2', title: 'Interview Feedback', subtitle: 'Pending', image: '/1.png' },
+                { number: '44', title: 'Approval', subtitle: 'Pending', image: '/2.png' },
+                { number: '13', title: 'Offer Acceptance', subtitle: 'Pending', image: '/3.png' }
               ].map((card, index) => (
                 <div
                   key={index}
@@ -1805,10 +1805,10 @@ export default function Dashboard() {
             {/* Second Row Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
               {[
-                { number: '17', title: 'Documentations', subtitle: 'Pending', image: '/public/4.png' },
-                { number: '3', title: 'Training', subtitle: 'Pending', image: '/public/5.png' },
-                { number: '5', title: 'Supervisor Allocation', subtitle: 'Pending', image: '/public/6.png' },
-                { number: '56', title: 'Project Allocation', subtitle: 'Pending', image: '/public/7.png' }
+                { number: '17', title: 'Documentations', subtitle: 'Pending', image: '/4.png' },
+                { number: '3', title: 'Training', subtitle: 'Pending', image: '/5.png' },
+                { number: '5', title: 'Supervisor Allocation', subtitle: 'Pending', image: '/6.png' },
+                { number: '56', title: 'Project Allocation', subtitle: 'Pending', image: '/7.png' }
               ].map((card, index) => (
                 <div
                   key={index}
