@@ -13,10 +13,22 @@ const app = express();
 
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://danny23.netlify.app'
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+  origin: function (origin, callback) {
+    // Allow requests with no origin (e.g., mobile apps or curl)
+    if (!origin || allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+    return callback(new Error('CORS error: Not allowed by CORS'));
+  },
   credentials: true
 }));
+
 app.use(express.json());
 
 
