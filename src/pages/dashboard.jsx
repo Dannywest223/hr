@@ -573,6 +573,13 @@ import { useRef, useCallback } from 'react';
 
 
 export default function Dashboard() {
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');    // or 'authToken' depending on your key
+    localStorage.removeItem('user');     // optionally clear user info
+    navigate('/login');                   // redirect to login route using react-router
+  };
+
   const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
   const [error, setError] = useState(null);
@@ -1741,6 +1748,8 @@ export default function Dashboard() {
           </div>
         </header>
 
+        
+
         <div className="flex-1 flex flex-col lg:flex-row overflow-hidden">
           {/* Dashboard Content */}
           <div className="flex-1 p-4 lg:p-6 overflow-y-auto">
@@ -2430,6 +2439,9 @@ export default function Dashboard() {
 
 
 
+ 
+  
+
 }
 
 
@@ -2483,9 +2495,5 @@ const showSuccessMessage = (message) => {
 };
 
 // Logout handler
-const handleLogout = () => {
-  localStorage.removeItem('token');
-  window.location.href = '/login';
-};
 
 
