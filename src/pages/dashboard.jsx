@@ -1768,7 +1768,7 @@ export default function Dashboard() {
             {/* Overview Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6 lg:mb-8">
               {[
-                { number: upcomingMeetings.length, title: 'Interview', subtitle: 'Scheduled', image: '/public/0.png' },
+                { number: upcomingMeetings.length, title: 'Interview', subtitle: 'Scheduled', image: '/0.png' },
                 { number: '2', title: 'Interview Feedback', subtitle: 'Pending', image: '/1.png' },
                 { number: '44', title: 'Approval', subtitle: 'Pending', image: '/2.png' },
                 { number: '13', title: 'Offer Acceptance', subtitle: 'Pending', image: '/3.png' }
