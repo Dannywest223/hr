@@ -267,7 +267,7 @@ const Login = () => {
       <div className="absolute top-4 sm:top-8 left-1/2 transform -translate-x-1/2 z-10 w-full px-4">
         <div className="flex items-center justify-center gap-2 sm:gap-3 max-w-md mx-auto">
         <img 
-  src="/src/assets/logo.png"  // ✅ Adjust this path if you're using import
+  src="/public/logo.png"  // ✅ Adjust this path if you're using import
   alt="HR Logo"
   className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
 />
@@ -288,7 +288,7 @@ const Login = () => {
         <div className="hidden lg:flex lg:flex-1 bg-gradient-to-br from-blue-400/60 to-blue-400/30 items-center justify-center p-8 sm:p-14 relative">
   <div className="relative w-[250px] h-[200px] sm:w-[300px] sm:h-[250px]">
     <img
-      src="/src/assets/side.png" // 🔁 or use import if using Vite + src/assets
+      src="/public/side.png" // 🔁 or use import if using Vite + src/assets
       alt="HR Illustration"
       className="w-full h-full object-contain rounded-lg shadow-md"
     />

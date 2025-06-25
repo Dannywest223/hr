@@ -1,12 +1,58 @@
-# React + Vite
+# HR Management Web App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack HR Management system built with **React (Vite)** for the frontend and **Node.js + Express + MongoDB** for the backend.
 
-Currently, two official plugins are available:
+It allows HR personnel to manage candidate data, search, view detailed profiles, generate reports, and perform actions such as delete, evaluate, and schedule via a calendar interface.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 🔐 Authentication (Signup, Login, Google OAuth)
+- 🔍 Search Bar (Real-time search for candidates)
+- 🧑 View Candidate Profiles
+- 📝 Comprehensive Report Tab per Candidate
+- 🗑️ Delete Candidates
+- 🗓️ Calendar integration (on Profile page)
+- 📄 View Completed Evaluations
+- 🚪 Logout functionality
+- 📁 MongoDB database (hosted on Atlas)
+- 🌐 CORS-safe backend–frontend communication
+
+---
+
+## 🧰 Technologies Used
+
+### Frontend
+- React (Vite)
+- Tailwind CSS
+- React Router
+- Netlify (for deployment)
+
+### Backend
+- Node.js
+- Express
+- MongoDB (Atlas)
+- Mongoose
+- JWT Authentication
+- Nodemailer
+- Render (for deployment)
+
+---
+
+## 🚀 Deployment
+
+- **Frontend**: [Netlify](https://danny23.netlify.app)
+- **Backend**: [Render](https://hr-zouw.onrender.com)
+
+Connected securely via `VITE_API_BASE_URL` environment variable in the frontend.
+
+---
+
+## 🖥️ Local Development Setup
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Dannywest223/hr.git
+cd hr-management

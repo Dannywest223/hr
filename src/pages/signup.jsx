@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import './signup.css';
 import { Link, useNavigate } from "react-router-dom";
+import yourImage from '/public/side.png'; // Update this path
+import logo from '/public/logo.png'; // adjust path if needed
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -78,81 +81,77 @@ const SignUp = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // In your SignUp.jsx, update the handleSubmit function:
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    if (!validateForm()) {
+      return;
+    }
 
-  if (!validateForm()) {
-    return;
-  }
+    setLoading(true);
+    setMessage({ type: '', text: '' });
 
-  setLoading(true);
-  setMessage({ type: '', text: '' });
+    try {
+      const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
-  try {
-    // Make sure this matches your backend URL
-    const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-
-
-    const response = await fetch(`${backendUrl}/api/auth/signup`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        firstName: formData.firstName.trim(),
-        lastName: formData.lastName.trim(),
-        email: formData.email.trim().toLowerCase(),
-        password: formData.password,
-      }),
-    });
-
-    const data = await response.json();
-
-    if (data.success) {
-      setMessage({
-        type: 'success',
-        text: data.message || 'Account created successfully! Please check your email to verify your account.',
+      const response = await fetch(`${backendUrl}/api/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName.trim(),
+          lastName: formData.lastName.trim(),
+          email: formData.email.trim().toLowerCase(),
+          password: formData.password,
+        }),
       });
 
-      setFormData({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        confirmPassword: '',
-      });
+      const data = await response.json();
 
-      setTimeout(() => {
-        navigate('/login', {
-          state: {
-            message: 'Please check your email and verify your account before logging in.',
-            email: formData.email.trim().toLowerCase(),
-          },
+      if (data.success) {
+        setMessage({
+          type: 'success',
+          text: data.message || 'Account created successfully! Please check your email to verify your account.',
         });
-      }, 3000);
-    } else {
+
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        });
+
+        setTimeout(() => {
+          navigate('/login', {
+            state: {
+              message: 'Please check your email and verify your account before logging in.',
+              email: formData.email.trim().toLowerCase(),
+            },
+          });
+        }, 3000);
+      } else {
+        setMessage({
+          type: 'error',
+          text: data.message || 'Something went wrong. Please try again.',
+        });
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
       setMessage({
         type: 'error',
-        text: data.message || 'Something went wrong. Please try again.',
+        text: 'Network error. Please check your connection and try again.',
       });
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error('Signup error:', error);
-    setMessage({
-      type: 'error',
-      text: 'Network error. Please check your connection and try again.',
-    });
-  } finally {
-    setLoading(false);
-  }
-};
+  };
 
   const handleGoogleSignUp = async () => {
     try {
-      // Redirect to Google OAuth endpoint
-     window.location.href = `${backendUrl}/api/auth/google`;;
+      const backendUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+      window.location.href = `${backendUrl}/api/auth/google`;
     } catch (error) {
       console.error('Google signup error:', error);
       setMessage({
@@ -183,89 +182,43 @@ const handleSubmit = async (e) => {
 
       {/* Header */}
       <div className="header">
-        <div className="header-content">
-          <div className="logo-icon">
-            <div className="logo-inner"></div>
-          </div>
-          <h1 className="header-title">HR Management</h1>
-        </div>
-      </div>
+  <div className="header-content">
+    <img src={logo} alt="Logo" className="logo-image" />
+    <h1 className="header-title">HR Management</h1>
+  </div>
+</div>
+
 
       {/* Main Container */}
       <div className="signup-box">
-        
         {/* Additional Corner Triangle Elements */}
         <div className="triangle-top-right"></div>
         <div className="triangle-bottom-left"></div>
         
-        {/* Left Side - Illustration */}
+        {/* Left Side - Your Image (hidden on mobile) */}
         <div className="signup-left">
-          <div className="illustration-container">
-            {/* Main Character */}
-            <div className="character">
-              {/* Head */}
-              <div className="character-head">
-                <div className="eye eye-left"></div>
-                <div className="eye eye-right"></div>
-                <div className="smile"></div>
-              </div>
-              
-              {/* Body */}
-              <div className="character-body">
-                {/* Arms */}
-                <div className="arm arm-left"></div>
-                <div className="arm arm-right"></div>
-                
-                {/* Tool/Pointer */}
-                <div className="pointer-tool"></div>
-                <div className="pointer-tip"></div>
-              </div>
-              
-              {/* Legs */}
-              <div className="character-legs">
-                <div className="leg leg-left"></div>
-                <div className="leg leg-right"></div>
-              </div>
-            </div>
-
-            {/* Document/Card */}
-            <div className="document-card">
-              <div className="document-icon"></div>
-              <div className="document-lines">
-                <div className="line line-1"></div>
-                <div className="line line-2"></div>
-                <div className="line line-3"></div>
-                <div className="line line-4"></div>
-              </div>
-            </div>
-
-            {/* Floating Elements */}
-            <div className="floating-circle circle-1"></div>
-            <div className="floating-circle circle-2"></div>
-            <div className="floating-circle circle-3"></div>
+          <div className="image-container">
+            <img 
+              src={yourImage} 
+              alt="Signup Illustration" 
+              className="signup-image"
+            />
           </div>
         </div>
 
         {/* Right Side - SignUp Form */}
         <div className="signup-right">
-          
           {/* Tab Navigation */}
           <div className="tab-navigation">
-            <Link 
-              to="/login"
-              className="tab-button"
-            >
+            <Link to="/login" className="tab-button">
               Login
             </Link>
-            <button 
-              className="tab-button active"
-            >
+            <button className="tab-button active">
               Sign Up
             </button>
           </div>
 
           <form className="signup-form" onSubmit={handleSubmit}>
-            
             {/* Message Display */}
             {message.text && (
               <div className={`message ${message.type}`}>

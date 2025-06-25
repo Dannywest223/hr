@@ -21,18 +21,17 @@ body, html {
 
 .signup-container {
     min-height: 100vh;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background: linear-gradient(135deg, #e8f2ff 0%, #f0f8ff 50%, #e8f2ff 100%);
     padding: 20px;
     box-sizing: border-box;
-    position: fixed;
-    top: 0;
-    left: 0;
-    overflow: hidden;
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* ========================================
@@ -194,57 +193,32 @@ body, html {
 ======================================== */
 
 .header {
-    position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin-bottom: 20px;
     z-index: 10;
+    width: 100%;
+    text-align: center;
 }
 
 .header-content {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 12px;
 }
 
-.logo-icon {
+.logo-image {
     width: 32px;
     height: 32px;
-    background-color: #4B93E7;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    margin-top: -2rem;
-}
-
-.logo-inner {
-    width: 16px;
-    height: 16px;
-    background-color: white;
-    border-radius: 50%;
-    position: relative;
-}
-
-.logo-inner::after {
-    content: '';
-    position: absolute;
-    top: 4px;
-    left: 4px;
-    width: 8px;
-    height: 8px;
-    background-color: #4B93E7;
-    border-radius: 50%;
-}
-
+    object-fit: contain;
+    margin-right: 8px;
+  }
+  
 .header-title {
     font-size: 1.25rem;
     font-weight: 600;
     color: #082777;
     margin: 0;
-    padding-top: 3rem;
-    margin-bottom: 5rem;
 }
 
 /* ========================================
@@ -259,7 +233,7 @@ body, html {
         0 0 0 1px rgba(255, 255, 255, 0.1);
     display: flex;
     width: 1000px;
-    max-width: 90vw;
+    max-width: 95%;
     min-height: 550px;
     position: relative;
     z-index: 5;
@@ -333,257 +307,131 @@ body, html {
 }
 
 /* ========================================
-   LEFT SIDE - ILLUSTRATION
+   LEFT SIDE - IMAGE
 ======================================== */
 
+/* ... (keep all existing styles until .signup-left) */
+
+/* ========================================
+   LEFT SIDE - IMAGE (Hidden on mobile)
+======================================== */
 .signup-left {
     flex: 1;
     background: linear-gradient(135deg, #4B93E78F 0%, rgba(75, 147, 231, 0.3) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 60px;
+    padding: 40px;
     position: relative;
+    min-height: 300px;
 }
 
-.illustration-container {
-    position: relative;
-    width: 300px;
-    height: 250px;
-}
-
-/* ========================================
-   CHARACTER ILLUSTRATION
-======================================== */
-
-.character {
-    position: absolute;
-    left: 50px;
-    top: 50px;
-    z-index: 10;
-}
-
-.character-head {
-    width: 50px;
-    height: 50px;
-    background-color: #4B93E7;
-    border-radius: 50%;
-    margin: 0 auto 10px;
-    position: relative;
-}
-
-.eye {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: white;
-    border-radius: 50%;
-    top: 12px;
-}
-
-.eye-left {
-    left: 12px;
-}
-
-.eye-right {
-    right: 12px;
-}
-
-.smile {
-    position: absolute;
-    bottom: 12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-}
-
-.character-body {
-    width: 60px;
-    height: 80px;
-    background-color: #4B93E7;
-    border-radius: 30px 30px 0 0;
-    margin: 0 auto;
-    position: relative;
-}
-
-.arm {
-    position: absolute;
-    width: 40px;
-    height: 10px;
-    background-color: #4B93E7;
-    border-radius: 5px;
-    top: 15px;
-}
-
-.arm-left {
-    left: -20px;
-    transform: rotate(-15deg);
-}
-
-.arm-right {
-    right: -20px;
-    transform: rotate(15deg);
-}
-
-.pointer-tool {
-    position: absolute;
-    right: -28px;
-    top: 8px;
-    width: 25px;
-    height: 3px;
-    background-color: #357ABD;
-    border-radius: 2px;
-    transform: rotate(45deg);
-}
-
-.pointer-tip {
-    position: absolute;
-    right: -32px;
-    top: 6px;
-    width: 6px;
-    height: 6px;
-    background-color: #357ABD;
-    border-radius: 50%;
-}
-
-.character-legs {
+.image-container {
+    width: 100%;
+    height: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    gap: 6px;
-    margin-top: -3px;
 }
 
-.leg {
-    width: 10px;
-    height: 40px;
-    background-color: #4B93E7;
-    border-radius: 5px;
-}
-
-/* ========================================
-   DOCUMENT CARD
-======================================== */
-
-.document-card {
-    position: absolute;
-    top: 30px;
-    right: 20px;
-    background-color: #4B93E7;
+.signup-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
     border-radius: 8px;
-    padding: 15px;
-    width: 120px;
-    height: 90px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    transform: rotate(3deg);
-    clip-path: polygon(
-        0% 10px,
-        10px 0%,
-        calc(50% - 5px) 0%,
-        50% 10px,
-        calc(50% + 5px) 0%,
-        calc(100% - 10px) 0%,
-        100% 10px,
-        100% calc(50% - 5px),
-        calc(100% - 10px) 50%,
-        100% calc(50% + 5px),
-        100% calc(100% - 10px),
-        calc(100% - 10px) 100%,
-        calc(50% + 5px) 100%,
-        50% calc(100% - 10px),
-        calc(50% - 5px) 100%,
-        10px 100%,
-        0% calc(100% - 10px),
-        0% calc(50% + 5px),
-        10px 50%,
-        0% calc(50% - 5px)
-    );
-}
-
-.document-icon {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    margin-bottom: 8px;
-}
-
-.document-lines {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-}
-
-.line {
-    height: 3px;
-    background-color: white;
-    border-radius: 2px;
-}
-
-.line-1 {
-    width: 100%;
-}
-
-.line-2 {
-    width: 75%;
-}
-
-.line-3 {
-    width: 100%;
-}
-
-.line-4 {
-    width: 50%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 /* ========================================
-   FLOATING ELEMENTS
+   RIGHT SIDE - SIGNUP FORM (Full width on mobile)
 ======================================== */
-
-.floating-circle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.3;
-}
-
-.circle-1 {
-    width: 40px;
-    height: 40px;
-    border: 3px solid #4B93E7;
-    top: 10px;
-    left: 10px;
-}
-
-.circle-2 {
-    width: 25px;
-    height: 25px;
-    background-color: #F7AC25;
-    bottom: 20px;
-    right: 50px;
-}
-
-.circle-3 {
-    width: 20px;
-    height: 20px;
-    background-color: #87CEEB;
-    top: 60%;
-    left: 0px;
-}
-
-/* ========================================
-   RIGHT SIDE - SIGNUP FORM
-======================================== */
-
 .signup-right {
     flex: 1;
-    padding: 50px 48px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 768px) {
+    .signup-container {
+        padding: 10px;
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .signup-box {
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+    }
+    
+    /* Hide the left side completely on mobile */
+    .signup-left {
+        display: none;
+    }
+    
+    /* Make the form take full width */
+    .signup-right {
+        width: 100%;
+        padding: 30px 20px;
+    }
+    
+    .header {
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    .tab-button {
+        font-size: 1.25rem;
+    }
+    
+    .background-shapes .shape {
+        display: none;
+    }
+    
+    /* Adjust triangular elements on mobile */
+    .signup-box::before,
+    .signup-box::after {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .signup-box .triangle-top-right,
+    .signup-box .triangle-bottom-left {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-right {
+        padding: 20px 15px;
+    }
+    
+    .tab-button {
+        font-size: 1.1rem;
+    }
+    
+    .signup-input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .signup-button,
+    .google-signup-button {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+    
+    .footer-content {
+        font-size: 0.65rem;
+    }
+}
 /* ========================================
    TAB NAVIGATION
 ======================================== */
@@ -595,7 +443,7 @@ body, html {
 }
 
 .tab-button {
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 8px;
     padding-left: 4px;
@@ -657,6 +505,17 @@ body, html {
     border-color: #4B93E7;
 }
 
+.signup-input.error {
+    border-color: #ff4444;
+}
+
+.error-message {
+    color: #ff4444;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: block;
+}
+
 .password-wrapper {
     position: relative;
 }
@@ -676,6 +535,29 @@ body, html {
 
 .password-toggle:hover {
     color: #374151;
+}
+
+/* ========================================
+   MESSAGE STYLING
+======================================== */
+
+.message {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+.message.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+}
+
+.message.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
 }
 
 /* ========================================
@@ -702,6 +584,13 @@ body, html {
     transform: translateY(-1px);
 }
 
+.signup-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .google-signup-button {
     background-color: #4B93E7;
     color: white;
@@ -725,6 +614,13 @@ body, html {
     transform: translateY(-1px);
 }
 
+.google-signup-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .google-icon {
     background-color: white;
     color: #4B93E7;
@@ -744,11 +640,11 @@ body, html {
 ======================================== */
 
 .footer {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    margin-top: 20px;
     z-index: 10;
+    width: 100%;
+    text-align: center;
 }
 
 .footer-content {
@@ -784,42 +680,37 @@ body, html {
 @media (max-width: 768px) {
     .signup-container {
         padding: 10px;
+        height: auto;
+        min-height: 100vh;
     }
     
     .signup-box {
         flex-direction: column;
-        width: 95%;
-        max-width: 400px;
-        margin: 0 auto;
-        min-height: 600px;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
     }
     
     .signup-left {
-        padding: 40px 20px;
+        padding: 30px 20px;
+        min-height: 200px;
     }
     
     .signup-right {
-        padding: 40px 20px;
+        padding: 30px 20px;
     }
     
     .header {
-        top: 20px;
+        margin-top: 20px;
+        margin-bottom: 10px;
     }
     
     .tab-button {
-        font-size: 1.5rem;
+        font-size: 1.25rem;
     }
     
     .background-shapes .shape {
         display: none;
-    }
-    
-    .footer {
-        position: relative;
-        margin-top: 20px;
-        transform: none;
-        left: auto;
-        bottom: auto;
     }
     
     /* Adjust triangular elements on mobile */
@@ -833,5 +724,35 @@ body, html {
     .signup-box .triangle-bottom-left {
         width: 60px;
         height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signup-left {
+        padding: 20px 15px;
+        min-height: 150px;
+    }
+    
+    .signup-right {
+        padding: 20px 15px;
+    }
+    
+    .tab-button {
+        font-size: 1.1rem;
+    }
+    
+    .signup-input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    .signup-button,
+    .google-signup-button {
+        padding: 10px 0;
+        font-size: 0.9rem;
+    }
+    
+    .footer-content {
+        font-size: 0.65rem;
     }
 }
